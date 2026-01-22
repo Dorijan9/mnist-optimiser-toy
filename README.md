@@ -14,3 +14,4 @@ Optimise the training pipeline to improve:
 ```bash
 pip install -r requirements.txt
 python train.py
+```
