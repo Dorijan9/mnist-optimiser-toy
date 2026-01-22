@@ -1,0 +1,5 @@
+Accuracy: 0.9697
+Runtime: 6.46s
+BatchSize: 64
+LearningRate: 0.001
+HiddenSize: 128
