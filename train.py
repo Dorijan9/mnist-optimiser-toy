@@ -13,9 +13,9 @@ from torchvision import datasets, transforms
 
 from model import SimpleMLP
 
-# ----------------------------
+
 # Config (good optimisation knobs)
-# ----------------------------
+
 BATCH_SIZE = 64
 EPOCHS = 3
 LR = 0.001
@@ -23,9 +23,9 @@ HIDDEN_SIZE = 128
 SEED = 42
 NUM_WORKERS = 0  # set to 2 or 4 for speed experiments
 
-# ----------------------------
+
 # Reproducibility / determinism
-# ----------------------------
+
 def seed_everything(seed: int) -> None:
     random.seed(seed)
     np.random.seed(seed)
@@ -40,9 +40,9 @@ seed_everything(SEED)
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
-# ----------------------------
+
 # Git metadata (best-effort)
-# ----------------------------
+
 def git_cmd(args):
     try:
         return subprocess.check_output(["git"] + args, stderr=subprocess.DEVNULL).decode().strip()
@@ -58,9 +58,9 @@ try:
 except Exception:
     pass
 
-# ----------------------------
+
 # Data
-# ----------------------------
+
 transform = transforms.ToTensor()
 train_set = datasets.MNIST(".", train=True, download=True, transform=transform)
 test_set = datasets.MNIST(".", train=False, download=True, transform=transform)
@@ -85,16 +85,16 @@ test_loader = torch.utils.data.DataLoader(
     pin_memory=(device == "cuda"),
 )
 
-# ----------------------------
+
 # Model
-# ----------------------------
+
 model = SimpleMLP(hidden_size=HIDDEN_SIZE).to(device)
 optimizer = optim.Adam(model.parameters(), lr=LR)
 loss_fn = nn.CrossEntropyLoss()
 
-# ----------------------------
+
 # Training
-# ----------------------------
+
 start_time = time.time()
 last_train_loss = None
 
@@ -116,9 +116,9 @@ for epoch in range(EPOCHS):
 
     last_train_loss = running_loss / max(1, n_batches)
 
-# ----------------------------
+
 # Evaluation
-# ----------------------------
+
 model.eval()
 correct = 0
 total = 0
@@ -132,9 +132,9 @@ with torch.no_grad():
 accuracy = correct / max(1, total)
 runtime_s = time.time() - start_time
 
-# ----------------------------
+
 # LOG OUTPUT
-# ----------------------------
+
 # Human-readable lines (nice for quick eyeballing)
 print(f"Accuracy: {accuracy:.4f}")
 print(f"Runtime: {runtime_s:.2f}s")
@@ -172,4 +172,3 @@ payload = {
 
 print("--- METRICS_JSON ---")
 print(json.dumps(payload))
-

@@ -8,3 +8,6 @@ __pycache__/
 
 # Downloaded datasets
 MNIST/
+
+# Artemis tools installation
+artemis-tools-*/

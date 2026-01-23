@@ -1,0 +1,14 @@
+Accuracy: 0.9667
+Runtime: 6.53s
+TrainLoss: 0.1080
+BatchSize: 64
+LearningRate: 0.001
+HiddenSize: 128
+Epochs: 3
+Seed: 42
+Device: cpu
+GitCommit: ddf78f06bf601af261d14629af30305efb683948
+GitBranch: main
+GitDirty: True
+--- METRICS_JSON ---
+{"timestamp_utc": "2026-01-22T14:37:23.651353+00:00", "accuracy": 0.9667, "runtime_s": 6.532515048980713, "train_loss": 0.10795158864076394, "batch_size": 64, "learning_rate": 0.001, "hidden_size": 128, "epochs": 3, "seed": 42, "device": "cpu", "num_workers": 0, "git_commit": "ddf78f06bf601af261d14629af30305efb683948", "git_branch": "main", "git_dirty": true}
